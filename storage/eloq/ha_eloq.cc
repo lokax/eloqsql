@@ -7124,6 +7124,7 @@ RecordStatus ha_eloq::PkRead(MyEloqTx *my_tx, const TxKey &pk_tx_key,
   auto [yield_func, resume_func]= my_tx->CoroFunctors();
 
   uint64_t key_version= table_schema_->KeySchema()->SchemaTs();
+  LOG(INFO) << "== key version = " << key_version << ", version = " << table_schema_->Version();
   const TableName *base_table_name= GetBaseTableNameFromTableSchema();
 
   ReadTxRequest read_req(base_table_name, key_version, &pk_tx_key,
