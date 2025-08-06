@@ -1363,6 +1363,7 @@ static int convert_tx_error(txservice::TxErrorCode err_code,
     my_error(HA_ERR_LOCK_WAIT_TIMEOUT, MYF(0), err_msg);
     return HA_ERR_LOCK_WAIT_TIMEOUT;
   default:
+    LOG(INFO) << "==== err code = " << (int)(err_code); 
     my_error(HA_ERR_ELOQ_DEFAULT_ERROR, MYF(0), err_msg);
     return HA_ERR_ELOQ_DEFAULT_ERROR;
   };
