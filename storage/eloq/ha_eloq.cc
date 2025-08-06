@@ -6946,7 +6946,6 @@ int ha_eloq::SkIndexScanNext(uchar *table_record)
             archive_version_ts);
         if (!success)
         {
-          LOG(INFO) << "=== DATA STORE ERROR";
           my_tx->tx_err_code_= txservice::TxErrorCode::DATA_STORE_ERROR;
           DBUG_RETURN(convert_tx_error(my_tx->tx_err_code_));
         }
@@ -7199,7 +7198,6 @@ RecordStatus ha_eloq::PkRead(MyEloqTx *my_tx, const TxKey &pk_tx_key,
     }
     else
     {
-      LOG(INFO) << "=== DATA STORE ERROR";
       my_tx->tx_err_code_= txservice::TxErrorCode::DATA_STORE_ERROR;
       rec_status= RecordStatus::Unknown;
     }
@@ -7308,7 +7306,6 @@ std::pair<RecordStatus, uint64_t> ha_eloq::SkRead(MyEloqTx *my_tx,
     }
     else
     {
-      LOG(INFO) << "=== DATA STORE ERROR";
       my_tx->tx_err_code_= txservice::TxErrorCode::DATA_STORE_ERROR;
       rec_status= RecordStatus::Unknown;
     }
